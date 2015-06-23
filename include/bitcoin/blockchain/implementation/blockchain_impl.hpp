@@ -72,6 +72,10 @@ public:
     void fetch_block_transaction_hashes(const hash_digest& hash,
         fetch_handler_block_transaction_hashes handle_fetch);
 
+    // fetch transaction hashes in mem_pool by hash
+    void fetch_mem_pool_transaction_hashes(
+        fetch_handler_mem_pool_transaction_hashes handle_fetch);
+
     // fetch height of block by hash
     void fetch_block_height(const hash_digest& hash,
         fetch_handler_block_height handle_fetch);

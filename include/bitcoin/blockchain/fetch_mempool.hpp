@@ -17,8 +17,8 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef LIBBITCOIN_BLOCKCHAIN_FETCH_BLOCK_HPP
-#define LIBBITCOIN_BLOCKCHAIN_FETCH_BLOCK_HPP
+#ifndef LIBBITCOIN_BLOCKCHAIN_MEMPOOL_HPP
+#define LIBBITCOIN_BLOCKCHAIN_MEMPOOL_HPP
 
 #include <cstdint>
 #include <system_error>
@@ -28,46 +28,6 @@
 
 namespace libbitcoin {
 namespace chain {
-    
-// TODO: rename to block_fetch_handler (interface break).
-typedef std::function<void (const std::error_code&, const block_type&)>
-    blockchain_fetch_handler_block;
-
-/**
- * Fetch a block by height.
- *
- * If the blockchain reorganises, operation may fail halfway.
- *
- * @param[in]   chain           Blockchain service
- * @param[in]   height          Height of block to fetch.
- * @param[in]   handle_fetch    Completion handler for fetch operation.
- * @code
- *  void handle_fetch(
- *      const std::error_code& ec,  // Status of operation
- *      const block_type& blk       // Block header
- *  );
- * @endcode
- */
-BCB_API void fetch_block(blockchain& chain, uint64_t height,
-    blockchain_fetch_handler_block handle_fetch);
-
-/**
- * Fetch a block by hash.
- *
- * If the blockchain reorganises, operation may fail halfway.
- *
- * @param[in]   chain           Blockchain service
- * @param[in]   hash            Block hash
- * @param[in]   handle_fetch    Completion handler for fetch operation.
- * @code
- *  void handle_fetch(
- *      const std::error_code& ec,  // Status of operation
- *      const block_type& blk       // Block header
- *  );
- * @endcode
- */
-BCB_API void fetch_block(blockchain& chain, const hash_digest& hash,
-    blockchain_fetch_handler_block handle_fetch);
 
 typedef std::function<void (const std::error_code&, const hash_list&)>
     blockchain_fetch_mem_pool_transactions_handler;

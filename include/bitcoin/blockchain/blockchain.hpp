@@ -94,6 +94,8 @@ public:
 
     typedef fetch_handler<hash_list> fetch_handler_block_transaction_hashes;
 
+    typedef fetch_handler<hash_list> fetch_handler_mem_pool_transaction_hashes;
+
     typedef fetch_handler<uint64_t> fetch_handler_block_height;
 
     typedef fetch_handler<uint64_t> fetch_handler_last_height;
@@ -199,6 +201,20 @@ public:
     virtual void fetch_block_transaction_hashes(
         const hash_digest& hash,
         fetch_handler_block_transaction_hashes handle_fetch) = 0;
+
+    /**
+     * Fetches list of transaction hashes in the mem pool.
+     *
+     * @param[in]   handle_fetch    Completion handler for fetch operation.
+     * @code
+     *  void handle_fetch(
+     *      const std::error_code& ec,      // Status of operation
+     *      const hash_list& hashes  // List of hashes
+     *  );
+     * @endcode
+     */
+    virtual void fetch_mem_pool_transaction_hashes(
+        fetch_handler_mem_pool_transaction_hashes handle_fetch) = 0;
 
     /**
      * Fetches the height of a block given its hash.

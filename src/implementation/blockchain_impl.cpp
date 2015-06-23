@@ -240,6 +240,17 @@ void blockchain_impl::fetch_block_transaction_hashes(
     };
 }
 
+void blockchain_impl::fetch_mem_pool_transaction_hashes(
+    fetch_handler_mem_pool_transaction_hashes handle_fetch)
+{
+    hash_list tx_hashes;
+    const block_detail_list unprocessed = orphans_.unprocessed();
+    for(const auto& block_detail : unprocessed)
+        tx_hashes.push_back(block_detail->hash());
+
+    handle_fetch(std::error_code(), tx_hashes);
+}
+
 void blockchain_impl::fetch_block_height(const hash_digest& hash,
     fetch_handler_block_height handle_fetch)
 {

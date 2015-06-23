@@ -41,6 +41,7 @@ src_libbitcoin_blockchain_la_SOURCES = \
     src/db_interface.cpp \
     src/fetch_block.cpp \
     src/fetch_block_locator.cpp \
+    src/fetch_mempool.cpp \
     src/organizer.cpp \
     src/orphans_pool.cpp \
     src/transaction_pool.cpp \
@@ -288,6 +289,7 @@ include_bitcoin_blockchain_HEADERS = \
     include/bitcoin/blockchain/define.hpp \
     include/bitcoin/blockchain/fetch_block.hpp \
     include/bitcoin/blockchain/fetch_block_locator.hpp \
+    include/bitcoin/blockchain/fetch_mempool.hpp \
     include/bitcoin/blockchain/organizer.hpp \
     include/bitcoin/blockchain/orphans_pool.hpp \
     include/bitcoin/blockchain/simple_chain.hpp \
